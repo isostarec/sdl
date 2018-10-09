@@ -1,0 +1,20 @@
+<div class="row h-100 justify-content-center align-items-center">
+    <h1>Add new server</h1>
+</div>
+<form>
+  <div class="form-group">
+    <label for="serverName">Name of the server</label>
+    <input type="text" class="form-control" id="serverName" placeholder="Server name">
+  </div>
+  <div class="form-group">
+      <label for="serverConnString">Connection string</label>
+      <input type="text" class="form-control" id="serverConnString" aria-describedby="serverConnStringHelp" placeholder="Server connection string">
+      <small id="serverConnStringHelp" class="form-text text-muted">Enter connection string in this format: FORMAT</small>
+  </div>
+  <div class="form-group">
+      <label for="Server name">Additional info</label>
+      <input type="text" class="form-control" id="serverAdditionalInfo" aria-describedby="serverAdditionalInfoHelp" placeholder="Additional info about this server">
+      <small id="serverAdditionalInfoHelp" class="form-text text-muted">Enter additional info here</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Server</button>
+</form>
