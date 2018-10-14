@@ -1,0 +1,14 @@
+ <h3>Query name: {{query.name}}</h3>
+        <div class="card card-body">
+            <p>{{query.value}}</p>
+            <div class="collapse" [attr.id]="query._id">
+                <div class="shadow-none p-3 mb-5 bg-light rounded">
+                    <kbd> {{query.value}}</kbd>
+                </div>
+            </div>
+        </div>
+            <button class="btn btn-danger">Remove query</button>
+            <button class="btn btn-info">Copy</button>
+            <button class="btn btn-info float-right" type="button" data-toggle="collapse" [attr.data-target]="hashtag+query._id" aria-expanded="false" aria-controls="collapseExample">
+                Show more
+            </button>

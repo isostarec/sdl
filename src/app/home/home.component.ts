@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Query } from '../models/query/query';
+import { HttpModule } from '@angular/http';
 import * as $ from 'jquery';
 
 @Component({
