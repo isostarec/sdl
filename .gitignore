@@ -101,3 +101,5 @@ typings/
 # next.js build output
 .next
 >>>>>>> 61e96d110ddd4ef3d7dcafa050bbaf6ad688aec9
+.vscode/tasks.json
+.vscode/launch.json

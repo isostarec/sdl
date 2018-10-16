@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Query } from '../../models/query/query';
 import { QueryService } from '../query.service';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
@@ -30,6 +30,10 @@ export class QueryListComponent implements OnInit {
         this.queryes = queryes
       })    
   }  
+
+  receiveQuery($event) {
+    this.createQuery($event);
+  }
 
   private getIndexOfQuery = (queryId: String) => {
     return this.queryes.findIndex((query) => {

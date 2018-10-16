@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -14,7 +14,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { SiteWrapperComponent } from './site-wrapper/site-wrapper.component';
 import { QueryDetailsComponent } from './queryes/query-details/query-details.component';
 import { QueryListComponent } from './queryes/query-list/query-list.component';
-import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -36,7 +35,7 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     RouterModule.forRoot([
       { path: '', redirectTo:'/home', pathMatch:'full'},
-      { path: 'home', component: HomeComponent},
+      { path: 'home', component: QueryListComponent},
       { path: 'servers/new', component: NewserverComponent},
       { path: 'servers/:serverId', component: ServerInfoComponent},
       { path: 'servers', component: ServersComponent},
