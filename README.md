@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Sdl
 
 The main purpose of this SPA is to provide manual data logging with the help of MEAN stack using CRUD operations
