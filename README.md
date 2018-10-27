@@ -2,7 +2,7 @@
 # Sdl
 
 The main purpose of this SPA is to provide manual data logging with the help of MEAN stack using CRUD operations
-and a custom API (https://github com/isostarec/sdl-api). Type of data logged using this app is of various SQL syntax-like type
+and a custom API (https://github.com/isostarec/sdl-api). Type of data logged using this app is of various SQL syntax-like type
 including operations such as but not limited to: Table insertions, procedure insertions, etc. This data is logged so changes accross multiple, unrelated clones of the same db are synced. This could be done following many reasons, one of which is that the app deployed to multiple versions of the same db strucutre can encounter bugs if dbs are not in sync.
 
 TLDR; Keep log of db changes so you can sync changes accross multiple dbs.
