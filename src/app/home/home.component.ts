@@ -10,9 +10,7 @@ import * as $ from 'jquery';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  serverNname = 'example';
-
+  
   constructor() { }
 
   query = new Query();

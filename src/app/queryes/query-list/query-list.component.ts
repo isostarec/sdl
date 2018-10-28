@@ -1,11 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Query } from '../../models/query/query';
 import { QueryService } from '../query.service';
+import { NgForm } from '@angular/forms';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { QueryDetailsComponent } from '../query-details/query-details.component';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
-import { query } from '@angular/core/src/render3/query';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-query-list',
@@ -15,6 +14,7 @@ import { query } from '@angular/core/src/render3/query';
 })
 export class QueryListComponent implements OnInit {
 
+  M : any;
   hashtag : string = "#";
   queryes: Query[]
   selectedQuery: Query
@@ -50,17 +50,28 @@ export class QueryListComponent implements OnInit {
     let query: Query = {
       name: "",
       info: "",
-      value: ""
+      value: "",
+      createDate: new Date,
+      createdBy: ""
     }
   }
 
-  deleteQuery = (queryId: String) => {
-    var idx = this.getIndexOfQuery(queryId);
-    if (idx !== -1) {
-      this.queryes.splice(idx, 1);
-      this.selectQuery(null);
+  // deleteQuery = (queryId: String) => {
+  //   var idx = this.getIndexOfQuery(queryId);
+  //   if (idx !== -1) {
+  //     this.queryes.splice(idx, 1);
+  //     this.selectQuery(null);
+  //   }
+  //   return this.queryes;
+  // }
+
+  onDelete(_id: string){
+    if(confirm('Are you sure you want to delete this query?') == true) {
+      this.queryService.deleteQuery(_id).subscribe((res) =>{
+        //this.M.toast({ html: 'deleted successfully'})
+        alert('Deleted successfully');
+      })
     }
-    return this.queryes;
   }
 
   addQuery = (query: Query) => {

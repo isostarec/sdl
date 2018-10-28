@@ -3,4 +3,6 @@ export class Query {
     name: string;
     info: string;
     value: string;
+    createDate: Date;
+    createdBy: string;
 }

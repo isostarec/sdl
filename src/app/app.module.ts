@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ServersComponent } from './servers/servers.component';
-import { NewserverComponent } from './newserver/newserver.component';
+import { NewserverComponent } from './servers/newserver/newserver.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ServerInfoComponent } from './server-info/server-info.component';
 import { NotFoundComponent } from './not-found/not-found.component';

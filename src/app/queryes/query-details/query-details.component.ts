@@ -20,9 +20,18 @@ export class QueryDetailsComponent implements OnInit {
   @Input()
   deleteHandler: Function;
 
-  constructor(private contactService: QueryService) { }
+  constructor(private queryService: QueryService) { }
 
   ngOnInit() {
+  }
+
+  onDelete(_id: string){
+    if(confirm('Are you sure you want to delete this query?') == true) {
+      this.queryService.deleteQuery(_id).subscribe((res) =>{
+        //this.M.toast({ html: 'deleted successfully'})
+        alert('Deleted successfully');
+      })
+    }
   }
 
 }

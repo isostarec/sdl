@@ -31,9 +31,12 @@ export class QueryService {
   insertQuery(newQuery: Query): Promise<void | Query> {
     return this.httpClient.post(this.queryesUrl, newQuery).pipe(
       map(res => res as Query)
-
     )
-    .toPromise()
+    .toPromise();
+  }
+
+  deleteQuery(_id: string) {
+    return this.httpClient.delete(this.queryesUrl + `/?id=${_id}`);
   }
 
   private handleError (error: any) {
