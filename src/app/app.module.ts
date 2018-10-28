@@ -15,6 +15,16 @@ import { SiteWrapperComponent } from './site-wrapper/site-wrapper.component';
 import { QueryDetailsComponent } from './queryes/query-details/query-details.component';
 import { QueryListComponent } from './queryes/query-list/query-list.component';
 import { FormsModule } from '@angular/forms';
+import * as hljs from 'highlight.js';
+import * as hljsSQL from 'highlight.js/lib/languages/sql';
+import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+
+export function highlightJsFactory(): any {
+  // only register the typescript language
+  hljs.registerLanguage('sql', hljsSQL);
+  return hljs;
+}
 
 @NgModule({
   declarations: [
@@ -33,6 +43,7 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule,
     BrowserModule,
+    FilterPipeModule,
     RouterModule.forRoot([
       { path: '', redirectTo:'/home', pathMatch:'full'},
       { path: 'home', component: QueryListComponent},
@@ -41,7 +52,11 @@ import { FormsModule } from '@angular/forms';
       { path: 'servers', component: ServersComponent},
       { path: '**', component: NotFoundComponent}
     ]),
-    HttpClientModule
+    HttpClientModule,
+    HighlightJsModule.forRoot({
+      provide: HIGHLIGHT_JS,
+      useFactory: highlightJsFactory
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

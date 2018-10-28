@@ -18,7 +18,7 @@ export class QueryListComponent implements OnInit {
   hashtag : string = "#";
   queryes: Query[]
   selectedQuery: Query
-
+  
   qry = new FormControl(Query);
 
   constructor(private queryService: QueryService) { }
@@ -27,8 +27,8 @@ export class QueryListComponent implements OnInit {
     this.queryService
       .getQueryes()
       .then((queryes: Query[]) => {
-        this.queryes = queryes
-      })    
+        this.queryes = queryes.reverse();
+      })   
   }  
 
   receiveQuery($event) {

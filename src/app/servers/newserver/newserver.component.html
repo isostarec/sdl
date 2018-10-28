@@ -8,7 +8,7 @@
   </div>
   <div class="form-group">
       <label for="serverConnString">Connection string</label>
-      <input type="text" class="form-control" id="serverConnString" aria-describedby="serverConnStringHelp" placeholder="Server connection string">
+      <input type="text" class="form-control" name="serverConnString" required [(ngModel)]="server.connString" aria-describedby="serverConnStringHelp" placeholder="Server connection string">
       <small id="serverConnStringHelp" class="form-text text-muted">Enter connection string in this format: FORMAT</small>
   </div>
   <div class="form-group">
@@ -16,5 +16,10 @@
       <input type="text" class="form-control" id="serverAdditionalInfo" aria-describedby="serverAdditionalInfoHelp" placeholder="Additional info about this server">
       <small id="serverAdditionalInfoHelp" class="form-text text-muted">Enter additional info here</small>
   </div>
-  <button type="submit" class="btn btn-primary" (click)="addServer()">Add Server</button>
+    <div class="form-group">
+            <label> Production:
+                    <input type="checkbox" [(ngModel)]="server.isProduction" name="isProduction">
+            </label>
+    </div>
+        <button type="submit" class="btn btn-primary" style="float: right" (click)="addServer()">Add Server</button>
 </form>

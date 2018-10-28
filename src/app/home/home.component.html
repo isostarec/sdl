@@ -16,33 +16,19 @@
                required
                [(ngModel)]="query.value" name="Query value">
     </div>
+
     <div class="shadow-none p-3 mb-5 bg-light rounded">
-      <div class="form-check checkbox-inline">
+        <h3>Select servers:</h3>
+      <div class="form-check checkbox-inline" *ngFor="let server of servers; let i=index">
         <label class="form-check-label">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="serv1">
-                <label class="custom-control-label" for="serv1">Server#1</label>
+                <input type="checkbox" class="custom-control-input" id="{{i}}" [(ngModel)]="server.checked">
+                <label class="custom-control-label" for="{{i}}">{{ server.name }}</label>
             </div>
         </label>
       </div>
-      <div class="form-check checkbox-inline">
-          <label class="form-check-label">
-              <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="serv12">
-                  <label class="custom-control-label" for="serv12">Server#2</label>
-              </div>
-          </label>
-        </div>
-        <div class="form-check checkbox-inline">
-            <label class="form-check-label">
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="23423">
-                    <label class="custom-control-label" for="23423">Server#3</label>
-                </div>
-            </label>
-          </div>
     </div>
-  
+
   <hr>
   <div class="row h-100 justify-content-center align-items-center">
     <button class="btn btn-success" (click)="submitQuery()">Add query</button>

@@ -1,15 +1,24 @@
 <p class="float left">{{ query.createDate | date:'dd.MM.yy - HH:mm' }} by {{ query.createdBy }} </p>
 <h3>Query name: {{query.name}}</h3>
         <div class="card card-body">
-            <p>{{query.value}}</p>
-            <div class="collapse" [attr.id]="query._id">
+            <!-- <pre><code mwlHighlightJs [source]=query.value language="sql"></code></pre> -->
                 <div class="shadow-none p-3 mb-5 bg-light rounded">
-                    <kbd> {{query.value}}</kbd>
+                    <!-- <pre><code mwlHighlightJs [source]=query.value language="sql"></code></pre> -->
+                    <textarea class="form-control rounded-0" cols="30" rows="10">
+
+                        {{ query.value }}
+                    </textarea>
                 </div>
-            </div>
         </div>
             <button class="btn btn-danger" (click)="onDelete(query._id)">Remove query</button>
             <button class="btn btn-info">Copy</button>
             <button class="btn btn-info float-right" type="button" data-toggle="collapse" [attr.data-target]="hashtag+query._id" aria-expanded="false" aria-controls="collapseExample">
                 Show more
             </button>
+            <ul>
+                <div *ngFor="let server of query.servers">
+                    <div *ngFor="let s of servers">
+                        <li *ngIf="s._id === server"> {{ s.name }} </li>
+                    </div>
+                </div>
+            </ul>

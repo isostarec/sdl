@@ -17,6 +17,10 @@ export class NewserverComponent implements OnInit {
   server = new Server();
 
   addServer(){
+    if(!this.server.isProduction)
+    {
+      this.server.isProduction = false;
+    }
       this.serverService.insertServer(this.server)
       alert('Server inserted successfully');
   }
