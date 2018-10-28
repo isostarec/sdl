@@ -36,7 +36,7 @@ export class QueryService {
   }
 
   deleteQuery(_id: string) {
-    return this.httpClient.delete(this.queryesUrl + `/?id=${_id}`);
+    return this.httpClient.delete(this.queryesUrl + `/delete/${_id}`);
   }
 
   private handleError (error: any) {
