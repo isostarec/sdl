@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { Query } from '../models/query/query';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators'
+import { Globals } from '../globals.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QueryService {
-    private queryesUrl = 'http://localhost:8000/api/queryes';
 
+  constructor(private httpClient: HttpClient, private Globals: Globals) { }
 
-  constructor(private httpClient: HttpClient) { }
+  private queryesUrl = `http://${this.Globals.API_ADDR}/api/queryes`;
 
   // get ("/api/queryes")
   getQueryes(): Promise<void | Query[]> {

@@ -1,0 +1,10 @@
+
+  <h3>Databases filter:</h3>
+<div class="form-check checkbox-inline" *ngFor="let server of servers; let i=index">
+  <label class="form-check-label">
+      <div class="custom-control custom-checkbox">
+          <input (click)="sendMessage(server, $event);" type="checkbox" class="custom-control-input" id="{{i}}" [(ngModel)]="server.checked">
+          <label class="custom-control-label" for="{{i}}">{{ server.name }}</label>
+      </div>
+  </label>
+</div>

@@ -1,9 +1,7 @@
+import { Globals } from '../globals.module';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
-import { Query } from '../models/query/query';
 
 export interface appQuery {
   name : string;
@@ -13,8 +11,9 @@ export interface appQuery {
   providedIn: 'root'
 })
 export class HomeService {
-  private queryesUrl =  'http://localhost:8000/api/queryes';
 
-  constructor(private httpClient : HttpClient) {}
+  constructor(private httpClient : HttpClient, private Globals: Globals) {}
+
+  private queryesUrl =  `http://${this.Globals.API_ADDR}/api/queryes`;
 
 }
