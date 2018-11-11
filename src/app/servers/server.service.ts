@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Server } from '../models/Server/server';
+import { Server } from '../models/server/server';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators'
+import { Globals } from '../globals.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerService {
-    private serversUrl = 'http://localhost:8000/api/servers';
-
     newServer = new (Server);
 
     
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private Globals: Globals) { }
+
+  private serversUrl = `http://${this.Globals.API_ADDR}/api/servers`;
 
   // get ("/api/servers")
   getServers(): Promise<void | Server[]> {

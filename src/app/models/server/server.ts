@@ -1,10 +1,11 @@
 export class Server {
-    _id: String;
+    _id: string;
     isProduction: boolean;
-    name: String;
-    connString: String;
-    info: String;
+    name: string;
+    connString: string;
+    info: string;
     createDate: Date;
-    createdBy: String;
+    createdBy: string;
     numberOfQueryes: Number;
+    checked: boolean;
 }

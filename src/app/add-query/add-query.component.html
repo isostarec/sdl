@@ -1,0 +1,32 @@
+<div class="row h-100 justify-content-center align-items-center">
+  <h1>Home</h1>
+</div>
+<div class="form-group">
+  <input type="text" id="createdBy" class="form-control" placeholder="Your name goes here"
+         required
+         [(ngModel)]="query.createdBy" name="Your name">
+</div>
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Query name" 
+           required
+           [(ngModel)]="query.name" name="Query name">
+  </div>
+<div class="form-group">
+  <input type="text" class="form-control" placeholder="Optional info about query"
+         required
+         [(ngModel)]="query.info" name="Query info">
+</div>
+<div class="form-group">
+    <textarea  type="text" id="queryInput" class="form-control" placeholder="Insert query here"
+           required
+           [(ngModel)]="query.value" name="Query value">
+    </textarea>
+</div>
+
+<app-server-filter (messageEvent)="receiveMessage($event)"></app-server-filter>
+
+<hr>
+<div class="row h-100 justify-content-center align-items-center">
+<button class="btn btn-success" (click)="submitQuery()">Add query</button>
+</div>
+<hr>

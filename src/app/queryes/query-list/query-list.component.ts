@@ -1,9 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Query } from '../../models/query/query';
 import { QueryService } from '../query.service';
-import { NgForm } from '@angular/forms';
-import { ReactiveFormsModule, FormControl } from '@angular/forms';
-import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -31,6 +29,13 @@ export class QueryListComponent implements OnInit {
       })   
   }  
 
+  refreshQueryData($event: Query[]){
+    if($event.length === 0) return;
+    
+    this.queryes = $event;
+    console.log(this.queryes)
+  }
+
   receiveQuery($event) {
     this.createQuery($event);
   }
@@ -51,6 +56,7 @@ export class QueryListComponent implements OnInit {
       name: "",
       info: "",
       value: "",
+      servers: [],
       createDate: new Date,
       createdBy: ""
     }

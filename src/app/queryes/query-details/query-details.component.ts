@@ -1,10 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { QueryListComponent } from '../query-list/query-list.component'
 import { Query } from '../../models/query/query';
-import { Server } from '../../models/Server/server';
+import { Server } from '../../models/server/server';
 import { QueryService } from '../query.service';
 import { ServerService } from '../../servers/server.service';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-query-details',
@@ -46,6 +44,13 @@ export class QueryDetailsComponent implements OnInit {
         alert('Deleted successfully');
       })
     }
+  }
+
+  copyInputMessage(inputElement){
+    inputElement.select();
+    document.execCommand('copy');
+    inputElement.setSelectionRange(0, 0);
+    console.log('aubdiawiubwad')
   }
 
 }
