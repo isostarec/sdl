@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Query } from '../../models/query/query';
 import { Server } from '../../models/server/server';
 import { QueryService } from '../query.service';
@@ -20,7 +21,7 @@ export class QueryDetailsComponent implements OnInit {
   @Input()
   deleteHandler: Function;
 
-  constructor(private queryService: QueryService, private serverService: ServerService) { }
+  constructor(private queryService: QueryService, private serverService: ServerService, private toastr: ToastrService) { }
 
   server: String;
   servers: Server[];
@@ -40,8 +41,7 @@ export class QueryDetailsComponent implements OnInit {
   onDelete(_id: string){
     if(confirm('Are you sure you want to delete this query?') == true) {
       this.queryService.deleteQuery(_id).subscribe((res) =>{
-        //this.M.toast({ html: 'deleted successfully'})
-        alert('Deleted successfully');
+        this.toastr.info("Deleted successfully", "Info");
       })
     }
   }
@@ -50,7 +50,6 @@ export class QueryDetailsComponent implements OnInit {
     inputElement.select();
     document.execCommand('copy');
     inputElement.setSelectionRange(0, 0);
-    console.log('aubdiawiubwad')
   }
 
 }

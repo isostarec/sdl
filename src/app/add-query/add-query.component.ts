@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { ServerService } from '../servers/server.service';
 import {QueryService} from '../queryes/query.service';
 import { Query } from '../models/query/query';
@@ -12,7 +13,7 @@ import { Server } from '../models/server/server';
 })
 export class AddQueryComponent implements OnInit {
 
-  constructor(private serverService: ServerService, private queryService: QueryService) { }
+  constructor(private serverService: ServerService, private queryService: QueryService, private toastr: ToastrService) { }
 
   checkedServers: string[];
   servers: Server[];
@@ -20,16 +21,19 @@ export class AddQueryComponent implements OnInit {
 
   receiveMessage($event){
     this.checkedServers = $event;
-    //console.log(this.checkedServers)
   }
 
   submitQuery(){
     if(!this.query.name){
-      return alert("Please insert query name");
+      this.toastr.info("Please enter query name!");
     }
-    this.query.servers = this.checkedServers;
-    this.queryService.insertQuery(this.query);
-    alert("Query Submitted with name \"" + this.query.name + "\"");
+    else
+    {
+      this.query.servers = this.checkedServers;
+      this.queryService.insertQuery(this.query);
+      this.toastr.success("Query Submitted with name \"" + this.query.name + "\"");
+    }
+
   }
 
   ngOnInit() {

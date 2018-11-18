@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { ServerService } from '../../servers/server.service';
 import { Server } from '../../models/server/server';
 
@@ -9,7 +10,7 @@ import { Server } from '../../models/server/server';
 })
 export class NewserverComponent implements OnInit {
 
-  constructor(private serverService : ServerService) { }
+  constructor(private serverService : ServerService, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,6 @@ export class NewserverComponent implements OnInit {
       this.server.isProduction = false;
     }
       this.serverService.insertServer(this.server)
-      alert('Server inserted successfully');
+      this.toastr.success("Server inserted successfully", "Success");
   }
 }

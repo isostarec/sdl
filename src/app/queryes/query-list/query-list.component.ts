@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { FormControl } from '@angular/forms';
 import { Query } from '../../models/query/query';
 import { QueryService } from '../query.service';
@@ -12,6 +13,7 @@ import { QueryService } from '../query.service';
 })
 export class QueryListComponent implements OnInit {
 
+  p: number = 1;
   M : any;
   hashtag : string = "#";
   queryes: Query[]
@@ -19,21 +21,25 @@ export class QueryListComponent implements OnInit {
   
   qry = new FormControl(Query);
 
-  constructor(private queryService: QueryService) { }
+  constructor(private queryService: QueryService, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.getQueryes(); 
+  }  
+
+  getQueryes(){
     this.queryService
       .getQueryes()
       .then((queryes: Query[]) => {
         this.queryes = queryes.reverse();
-      })   
-  }  
+      })
+  }
 
   refreshQueryData($event: Query[]){
     if($event.length === 0) return;
     
     this.queryes = $event;
-    console.log(this.queryes)
+    //console.log(this.queryes)
   }
 
   receiveQuery($event) {
@@ -50,7 +56,6 @@ export class QueryListComponent implements OnInit {
     this.selectedQuery = query;
   }
 
-
   createNewQuery(){
     let query: Query = {
       name: "",
@@ -62,20 +67,11 @@ export class QueryListComponent implements OnInit {
     }
   }
 
-  // deleteQuery = (queryId: String) => {
-  //   var idx = this.getIndexOfQuery(queryId);
-  //   if (idx !== -1) {
-  //     this.queryes.splice(idx, 1);
-  //     this.selectQuery(null);
-  //   }
-  //   return this.queryes;
-  // }
-
   onDelete(_id: string){
     if(confirm('Are you sure you want to delete this query?') == true) {
       this.queryService.deleteQuery(_id).subscribe((res) =>{
-        //this.M.toast({ html: 'deleted successfully'})
-        alert('Deleted successfully');
+        this.toastr.info("Deleted successfully", "Info");
+        this.getQueryes();
       })
     }
   }

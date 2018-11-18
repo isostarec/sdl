@@ -40,7 +40,7 @@ export class QueryFilterComponent {
             });
           });
           this.getUniqueQueryes(this.filteredQueryes);
-          this.sendUniqueQueryes.emit(this.uniqueQueryes);
+          this.sendUniqueQueryes.emit(this.uniqueQueryes.reverse());
         })
   }
 

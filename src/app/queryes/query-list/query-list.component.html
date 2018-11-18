@@ -1,9 +1,11 @@
 <app-query-filter (sendUniqueQueryes)="refreshQueryData($event)"></app-query-filter>
+<pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
 <div class="shadow p-3 mb-5 bg-white rounded"
-     *ngFor="let query of queryes; let i = index"
+     *ngFor="let query of queryes | paginate: { itemsPerPage: 10, currentPage: p }; let i = index "
      (click)="selectQuery(query)">
      <h3></h3>
      <app-query-details
      [query]="query">
       </app-query-details>
 </div>
+<pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
